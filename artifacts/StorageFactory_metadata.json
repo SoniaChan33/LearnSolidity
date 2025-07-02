@@ -1,0 +1,98 @@
+{
+	"compiler": {
+		"version": "0.8.19+commit.7dd6d404"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "createMyStorage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "sfRetrieve",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_myFavoriteNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "sfStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"StorageFactory.sol": "StorageFactory"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"SimpleStorage.sol": {
+			"keccak256": "0x778c8689dcada66fba180fd96a9c8a2b4fdb9b727cf3ec430a11329e666ccfd1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49a82207bb76486d9dd87cc84dca129de7eb8ab272da0e1ad7c36d980a59840f",
+				"dweb:/ipfs/QmYMYarHM7N9Ve5qDrn2eHEiAvcuzBTwJpofVZcc1zcGkn"
+			]
+		},
+		"StorageFactory.sol": {
+			"keccak256": "0xd6991c3c0bf327c1541bf1c335b48f258f0b467451086cb7b71ea268010087af",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a493e0e511c65121d6b806375bc9a0fab5a5b21b7081aecfbe4b5e7eab49fade",
+				"dweb:/ipfs/QmNzKnBwQTzEJUNEDwQ8HRBbGe2gAqbPkwPxEabPPosKy2"
+			]
+		}
+	},
+	"version": 1
+}
