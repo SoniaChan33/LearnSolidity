@@ -5,6 +5,12 @@ import {PriceConvertor} from "./PriceConvertor.sol";
 
 contract FundMe{
 
+    address public owner;
+
+    constructor () {
+        owner = msg.sender;
+    }
+
     // 表示所有uint256类型可以调用该library的函数
     using PriceConvertor for uint256;
 
@@ -22,6 +28,8 @@ contract FundMe{
     }
 
     function withDraw() public {
+        require(msg.sender == owner,"Must be the Owner!");
+
 
         //  Reset the funder records
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex ++) {
