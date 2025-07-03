@@ -23,6 +23,13 @@ contract FundMe{
 
     function withDraw() public {
 
+        //  Reset the funder records
+        for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex ++) {
+            address funder = funders[funderIndex];
+            funderAmountMap[funder] = 0;
+        }
+        // reset the array
+        funders = new address[](0);
     }
 
 }
