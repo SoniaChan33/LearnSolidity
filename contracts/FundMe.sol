@@ -1,31 +1,28 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {PriceConvertor} from "./PriceConvertor.sol";
 
 contract FundMe{
 
+    // 表示所有uint256类型可以调用该library的函数
+    using PriceConvertor for uint256;
+
+    address[] public funders; 
+
+    mapping(address funderAddress => uint256 funderAmount) public funderAmountMap;
 
     uint256 public  minimumUsd = 5 * 1e18;
     
     function fund() public payable {
-        require(getConversionRate(msg.value) > minimumUsd, "Didn't send enough ETH"); //if the condition is false, revert with the error message    }
+        require(msg.value.getConversionRate() > minimumUsd, "Didn't send enough ETH"); //if the condition is false, revert with the error message    }
+    
+        funders.push(msg.sender);
+        funderAmountMap[msg.sender] += msg.value;
     }
 
     function withDraw() public {
 
-    }
-
-    // 获取当前的eth对应实际世界的美元价格
-    function getPrice() public view returns(uint256) {
-        AggregatorV3Interface addressToBeFetched = AggregatorV3Interface(0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43);
-        (, int256 answer,,,) = addressToBeFetched.latestRoundData(); // ( ,,,, , )  取出地址，值，错误码等
-        return uint256(answer * 1e18);
-    }
-
-    function getConversionRate(uint256 usdDollar) public view returns(uint256) {
-        uint256 ethPrice = getPrice();
-        return (ethPrice*usdDollar)/1e18;
     }
 
 }
