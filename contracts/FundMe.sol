@@ -36,6 +36,15 @@ contract FundMe{
         }
         // reset the array
         funders = new address[](0);
+
+        // send money to msg.sender[three ways]
+        // transfer
+            // payable(msg.sender).transfer(amount); // the current contract sends the Ether amount to the msg.sender
+        // send
+            // bool success = payable(msg.sender).send(address(this).balance); require(success, "Send failed");
+        // call
+        (bool success, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(success, "Call failed");
     }
 
     // 任何由onlyOwner修饰都会先执行这部分代码，“_;”代表被修饰的函数的代码，放在require之前就是先执行完函数代码再执行modifier代码块中内容
