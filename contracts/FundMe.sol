@@ -27,9 +27,7 @@ contract FundMe{
         funderAmountMap[msg.sender] += msg.value;
     }
 
-    function withDraw() public {
-        require(msg.sender == owner,"Must be the Owner!");
-
+    function withDraw() public onlyOwner{
 
         //  Reset the funder records
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex ++) {
@@ -40,4 +38,9 @@ contract FundMe{
         funders = new address[](0);
     }
 
+    // 任何由onlyOwner修饰都会先执行这部分代码，“_;”代表被修饰的函数的代码，放在require之前就是先执行完函数代码再执行modifier代码块中内容
+    modifier onlyOwner {
+        require(msg.sender == owner,"Must be the Owner!");
+        _;
+    }
 }
