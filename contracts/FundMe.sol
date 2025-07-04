@@ -3,6 +3,8 @@ pragma solidity ^0.8.18;
 
 import {PriceConvertor} from "./PriceConvertor.sol";
 
+// custom errors
+error NotTheOwner();
 contract FundMe{
 
     // immutable 适用于部署时设置且不变的值 
@@ -51,7 +53,10 @@ contract FundMe{
 
     // 任何由onlyOwner修饰都会先执行这部分代码，“_;”代表被修饰的函数的代码，放在require之前就是先执行完函数代码再执行modifier代码块中内容
     modifier onlyOwner {
-        require(msg.sender == i_owner,"Must be the Owner!");
+        if (msg.sender != i_owner) {
+            revert NotOwner();
+        }
+        // require(msg.sender == i_owner,"Must be the Owner!");
         _;
     }
 }
