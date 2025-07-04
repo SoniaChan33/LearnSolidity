@@ -59,4 +59,12 @@ contract FundMe{
         // require(msg.sender == i_owner,"Must be the Owner!");
         _;
     }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
+    }
 }
