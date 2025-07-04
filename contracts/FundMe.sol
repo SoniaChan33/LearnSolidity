@@ -54,7 +54,7 @@ contract FundMe{
     // 任何由onlyOwner修饰都会先执行这部分代码，“_;”代表被修饰的函数的代码，放在require之前就是先执行完函数代码再执行modifier代码块中内容
     modifier onlyOwner {
         if (msg.sender != i_owner) {
-            revert NotOwner();
+            revert NotTheOwner();
         }
         // require(msg.sender == i_owner,"Must be the Owner!");
         _;
